@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Management</title>
+  <link rel="icon" href="img/agri2.jpg" type="image">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      margin: 30px auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    select, input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #c8e6c9;
+      font-size: 1rem;
+      background-color: white;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1b5e20;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #2e7d32;
+      color: white;
+      position: relative;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="navi">Crop Management</h1>
+    <nav>
+      <a href="fertilizer-management.html">Fertilizer Management</a>
+    </nav>
+    <!-- Hamburger Menu -->
+        <div id="hamburger-menu" class="hamburger-menu" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <!-- Menu -->
+        <div id="menu" class="menu">
+            <div id="username" class="username"></div>
+            <a href="about-us.html">About Us</a>
+            <button id="login-btn" onclick="window.location.href='login.html'">Login</button>
+            <div class="logout">
+                <button id="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    
+  </header>
+
+  <main>
+    <div class="container">
+      <form id="cropForm">
+        <label for="landform">Landform:</label>
+        <select id="landform" name="landform">
+          <option value="Valley">Valley</option>
+          <option value="Mountain Slopes">Mountain Slopes</option>
+          <option value="Plateau">Plateau</option>
+          <option value="Plains">Plains</option>
+          <option value="Coastal">Coastal</option>
+          <option value="Desert">Desert</option>
+        </select>
+
+        <label for="climate">Climate:</label>
+        <select id="climate" name="climate">
+          <option>Humid & Fertile (Valley)</option>
+          <option>Cool, Humid, Temperate (Mountain Slopes)</option>
+          <option>Semi-Arid, Dry Temperate (Plateau)</option>
+          <option>Temperate, Subtropical (Plains)</option>
+          <option>Tropical, Humid (Coastal)</option>
+          <option>Arid, Hot, Dry (Desert)</option>
+        </select>
+
+        <label for="soiltype">Soil Type:</label>
+        <select id="soiltype" name="soiltype">
+          <option value="Alluvial Soil">Alluvial Soil (Humid & Fertile)</option>
+          <option value="Loamy Soil">Loamy Soil (Cool, Humid, Temperate)</option>
+          <option value="Volcanic Soil">Volcanic Soil (Semi-Arid, Dry Temperate)</option>
+          <option value="Black Soil">Black Soil (Temperate, Subtropical)</option>
+          <option value="Laterite Soil">Laterite Soil (Tropical, Humid)</option>
+          <option value="Clayey Soil">Clayey Soil (Temperate, Subtropical)</option>
+          <option value="Sandy Soil">Sandy Soil (Tropical, Humid)</option>
+          <option value="Saline Soil">Saline Soil (Arid, Hot, Dry)</option>
+          <option value="Arid Soil">Arid Soil (Arid, Hot, Dry)</option>
+        </select>
+
+        <label for="majorCrop">Major Crop:</label>
+        <select id="majorCrop" name="majorCrop">
+          <option value="Rice">Rice (Alluvial Soil)</option>
+          <option value="Sugarcane">Sugarcane (Alluvial Soil)</option>
+          <option value="Jute">Jute (Alluvial Soil)</option>
+          <option value="Banana">Banana (Alluvial Soil)</option>
+          <option value="Tea">Tea (Loamy Soil)</option>
+          <option value="Apple">Apple (Loamy Soil)</option>
+          <option value="Walnut">Walnut (Loamy Soil)</option>
+          <option value="Cardamom">Cardamom (Loamy Soil)</option>
+          <option value="Coffee">Coffee (Volcanic Soil)</option>
+          <option value="Sorghum">Sorghum (Black Soil)</option>
+        </select>
+
+        <button type="button" id="calculate">Calculate</button>
+      </form>
+      <div id="result"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Agriculture Management System. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="Crop-management.js"></script>
+  <script src="loginout.js"></script>
+</body>
+</html>
